@@ -58,7 +58,19 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 .nav__cta:hover{background:var(--tomato-deep);transform:translateY(-2px)}
 @media (max-width:880px){.nav,.nav.is-scrolled{padding:14px 20px}.nav__links{display:none}.nav__cta{padding:10px 14px;font-size:.62rem}}
 .hero{position:relative;height:100vh;height:var(--vh);min-height:680px;overflow:hidden;background:#000}
-.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.06) saturate(1.05) brightness(.9)}
+.hero__video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.06) saturate(1.05) brightness(.9);
+  opacity:0;
+  transition:opacity .9s ease-in-out;}
+
+.hero__video.is-active{
+  opacity:1;
+}
 .hero__veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,rgba(0,0,0,.4),transparent 60%),linear-gradient(180deg,rgba(0,0,0,.25) 0%,transparent 25%,rgba(0,0,0,.55) 100%)}
 .hero__grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.16;z-index:2;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/></svg>")}
 .btn{display:inline-flex;align-items:center;gap:14px;padding:18px 26px;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;font-weight:600;transition:background .25s,color .25s,transform .35s var(--easing-out),border-color .25s;border:1px solid transparent;cursor:pointer}
@@ -200,7 +212,7 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
 .foot__brand small{font-size:.85rem;display:block;max-width:280px;line-height:1.55}
 .foot__col h4{font-family:var(--f-display);font-size:1.1rem;letter-spacing:var(--track);color:var(--cream);margin-bottom:18px}
 .foot__col ul{list-style:none}
-.foot__col li{margin-bottom:10px;font-size:.92rem}
+.foot__col li{margin-bottom:10px;font-size:.92rem;overflow-wrap:anywhere;word-break:break-word;}
 .foot__col a:hover{color:var(--tomato)}
 .foot__bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;border-top:1px solid var(--line);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;max-width:1320px;margin:0 auto}
 .foot__social{display:flex;gap:14px}
@@ -219,15 +231,16 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
   <a href="#contacto" class="nav__cta">Reservar</a>
 </header>
 <section class="hero" id="hero">
-  <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto"></video>
+  <video class="hero__video is-active" id="heroVideoA" autoplay muted playsinline preload="auto"></video>
+  <video class="hero__video" id="heroVideoB" muted playsinline preload="auto"></video>
   <div class="hero__veil"></div><div class="hero__grain"></div>
 </section>
 <div class="marquee"><div class="marquee__track">
-  <span>Pasta artesanal <i>·</i> Pizza napolitana <i>·</i> Vinos italianos <i>·</i> Foodtruck Barcelona <i>·</i> Delivery <i>·</i> The Art of Temptation <i>·</i></span>
-  <span>Pasta artesanal <i>·</i> Pizza napolitana <i>·</i> Vinos italianos <i>·</i> Foodtruck Barcelona <i>·</i> Delivery <i>·</i> The Art of Temptation <i>·</i></span>
+  <span>Foodtruck coming <i>·</i> Pizza napolitana <i>·</i> The Art of Temptation <i>·</i> Foodtruck coming <i>·</i> Pizza napolitana <i>·</i> The Art of Temptation <i>·</i></span>
+  <span>Foodtruck coming <i>·</i> Pizza napolitana <i>·</i> The Art of Temptation <i>·</i> Foodtruck coming <i>·</i> Pizza napolitana <i>·</i> The Art of Temptation <i>·</i></span>
 </div></div>
 <section class="manifesto" id="manifesto"><div class="wrap"><div class="manifesto__grid">
-  <div class="reveal"><div class="eyebrow" style="margin-bottom:24px">Nosotros</div><p class="manifesto__quote">"Cocinar bien es el único <em>pecado</em> que todos deberíamos cometer."</p></div>
+  <div class="reveal"><div class="eyebrow" style="margin-bottom:24px">Nosotros</div><p class="manifesto__quote">"Comer bien es el único <em>pecado</em> que todos deberíamos cometer."</p></div>
   <div class="manifesto__body reveal"><p>Peccatore nace con una idea simple: la cocina italiana no necesita disfrazarse. Necesita producto, fuego y técnica. Lo demás sobra.</p><p>Empezamos rodando — una foodtruck negra recorriendo los eventos más interesantes de Barcelona — y aspiramos a quedarnos. Cada plato es una pequeña tentación. Caer en ella, un placer.</p></div>
 </div></div>
 <div class="manifesto__band reveal"><div class="wrap"><div class="manifesto__nums">
@@ -236,7 +249,7 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
   <div><strong>100%</strong><span>Producto italiano</span></div>
 </div></div></div></section>
 <section class="carta" id="carta"><div class="wrap">
-  <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:14px">La carta</div><h2>El menú</h2></div><p>Pizza napolitana de masa fermentada 48h y horno de piedra. Eat. Sin. Repeat.</p></div>
+  <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:14px">La carta</div><h2>El menú</h2></div><p>No cocinamos para todos. <br> Cocinamos para quien sabe disfrutar. </p></div>
   <div class="tabs" role="tablist">
     <button class="tab is-active" data-tab="pizze">Pizzas</button>
     <button class="tab" data-tab="dip">Dip your crust</button>
@@ -271,7 +284,7 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
   </div>
 </div></section>
 <section class="experience" id="truck"><div class="experience__layout">
-  <div class="experience__media reveal"><img src="https://images.unsplash.com/photo-1593504049359-74330189a345?w=1400&q=80" alt="Pizza saliendo del horno de piedra" /></div>
+  <div class="experience__media reveal"><img src="images/foodtruck.jpg" alt="Peccatore Foodtruck"></div>
   <div class="experience__text reveal">
     <div class="eyebrow">La foodtruck</div>
     <h2><em>Pizza sobre ruedas</em>El pecado va donde tú estás</h2>
@@ -288,22 +301,49 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
     </div>
     <div class="ig__info">
       <div class="ig__row1"><div class="ig__name">peccatore.bcn</div><a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__follow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Seguir</a></div>
-      <div class="ig__stats"><div><strong>9</strong> publicaciones</div><div><strong>29</strong> seguidores</div><div><strong>9</strong> seguidos</div></div>
       <div class="ig__cat">Restaurante</div>
       <div class="ig__bio">Peccatore | Pizza, Pasta &amp; Antipasti<br/><em>The art of temptation.</em> · Barcelona</div>
     </div>
   </div>
   <div class="ig__grid reveal-stagger">
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1593504049359-74330189a345?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80" alt="" loading="lazy"/></a>
-    <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post"><img src="https://images.unsplash.com/photo-1542528180-a1208c5169a5?w=800&q=80" alt="" loading="lazy"/></a>
-  </div>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig1.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig2.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig3.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig4.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig5.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig6.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig7.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig8.jpg" alt="" loading="lazy">
+  </a>
+
+  <a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="ig__post">
+    <img src="instagram/ig9.jpg" alt="" loading="lazy">
+  </a>
+
+</div>
   <div class="ig__foot"><a href="https://instagram.com/peccatore.bcn" target="_blank" rel="noopener" class="btn btn--ghost">Ver perfil completo en Instagram<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div></section>
 <section class="ruta" id="ruta"><div class="wrap">
@@ -317,14 +357,14 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
   <div class="ruta__foot reveal"><p>¿Organizas un evento? <em>Llevamos la foodtruck donde tú digas.</em></p><a href="#contacto" class="btn btn--red">Reservar la foodtruck<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div></section>
 <section class="gallery"><div class="wrap">
-  <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:14px">Diario visual</div><h2>Detrás del fuego</h2></div><p>Pequeños momentos que componen la cocina.<br/>Lo que ves es lo que hay.</p></div>
+  <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:14px">Diario</div><h2>The art of temptation</h2></div><p>Hay placeres que merecen repetirse.<br/>Este es uno de ellos.</p></div>
   <div class="gallery__strip reveal-stagger">
-    <div data-label="Masa · 48h"><img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=900&q=80" alt="" loading="lazy"/></div>
-    <div data-label="Margherita"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80" alt="" loading="lazy"/></div>
-    <div data-label="Diavola"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=900&q=80" alt="" loading="lazy"/></div>
-    <div data-label="Horno"><img src="https://images.unsplash.com/photo-1593504049359-74330189a345?w=900&q=80" alt="" loading="lazy"/></div>
-    <div data-label="Mortazza"><img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=900&q=80" alt="" loading="lazy"/></div>
-    <div data-label="Ibérica"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80" alt="" loading="lazy"/></div>
+    <div data-label="Preparar"><img src="gallery/gallery1.jpg" alt="" loading="lazy"/></div>
+    <div data-label="Personalizar"><img src="gallery/gallery2.jpg" alt="" loading="lazy"/></div>
+    <div data-label="Compartir"><img src="gallery/gallery3.jpg" alt="" loading="lazy"/></div>
+    <div data-label="Hornear"><img src="gallery/gallery4.jpg" alt="" loading="lazy"/></div>
+    <div data-label="Disfrutar"><img src="gallery/gallery5.jpg" alt="" loading="lazy"/></div>
+    <div data-label="Seducir"><img src="gallery/gallery6.jpg" alt="" loading="lazy"/></div>
   </div>
 </div></section>
 <section class="contact" id="contacto"><div class="wrap">
@@ -346,7 +386,7 @@ footer{padding:80px 40px 40px;background:#050505;color:var(--cream-soft);border-
 </div></section>
 <footer id="footer">
   <div class="foot__top">
-    <div class="foot__brand"><div class="h-display">PECCATORE</div><p>The Art of Temptation</p><small>Pizza napolitana de horno de piedra. Foodtruck y eventos privados en Barcelona.</small></div>
+    <div class="foot__brand"><div class="h-display">PECCATORE</div><p>The Art of Temptation</p><small>Pizza napolitana de horno de piedra. Foodtruck y eventos privados en Barcelona y alrededores.</small></div>
     <div class="foot__col"><h4>Cocina</h4><ul><li><a href="#carta">La carta</a></li></ul></div>
     <div class="foot__col"><h4>Visítanos</h4><ul><li><a href="#truck">La foodtruck</a></li><li><a href="#ruta">La ruta · En gira</a></li><li><a href="#instagram">Instagram</a></li></ul></div>
     <div class="foot__col"><h4>Contacto</h4><ul><li><a href="https://wa.me/34672315392" target="_blank">WhatsApp +34 672 315 392</a></li><li><a href="mailto:ciao@peccatorebcn.com">ciao@peccatorebcn.com</a></li><li><a href="https://instagram.com/peccatore.bcn" target="_blank">@peccatore.bcn</a></li><li>Barcelona</li></ul></div>
@@ -367,9 +407,89 @@ window.addEventListener('scroll',navState,{passive:true});navState();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
 document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',()=>{const id=tab.dataset.tab;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('is-active', t===tab));document.querySelectorAll('.menu-pane').forEach(p=>p.classList.toggle('is-active', p.id===`pane-${id}`));});});
-(function(){const v=document.getElementById('heroVideo');if(!v) return;const clips=['v1.mp4','v2.mp4','v3.mp4','v4.mp4','v5.mp4'];let i=0;function go(){v.src=clips[i];v.load();const p=v.play();if(p && p.catch) p.catch(()=>{});}function next(){i=(i+1)%clips.length;go();}v.addEventListener('ended',next);v.addEventListener('error',()=>{console.warn('Clip falló:',clips[i]);next();});go();})();
-const heroVideo=document.querySelector('.hero__video');
-window.addEventListener('scroll',()=>{const y=window.scrollY;if(y<window.innerHeight && heroVideo){heroVideo.style.transform=`translateY(${y*.18}px) scale(1.04)`;}},{passive:true});
+(function(){
+  const clips=['v1.mp4','v2.mp4','v3.mp4','v4.mp4','v5.mp4'];
+
+  const videoA=document.getElementById('heroVideoA');
+  const videoB=document.getElementById('heroVideoB');
+
+  if(!videoA || !videoB) return;
+
+  let current=videoA;
+  let next=videoB;
+  let i=0;
+  let switching=false;
+  const CROSSFADE_SECONDS=1.2;
+
+  function setVideo(video, src){
+    video.src=src;
+    video.load();
+  }
+
+  function playCurrent(){
+    const p=current.play();
+    if(p && p.catch) p.catch(()=>{});
+  }
+
+  function prepareNext(){
+    const nextIndex=(i+1)%clips.length;
+    setVideo(next, clips[nextIndex]);
+  }
+
+  function switchVideo(){
+  if(switching) return;
+  switching=true;
+
+  i=(i+1)%clips.length;
+
+  next.currentTime=0;
+
+  const p=next.play();
+  if(p && p.catch) p.catch(()=>{});
+
+  next.classList.add('is-active');
+  current.classList.remove('is-active');
+
+  setTimeout(()=>{
+    current.pause();
+
+    const old=current;
+    current=next;
+    next=old;
+
+    prepareNext();
+    switching=false;
+  }, CROSSFADE_SECONDS*1000);
+}
+
+  setVideo(current, clips[0]);
+  setVideo(next, clips[1]);
+
+  current.addEventListener('loadeddata', playCurrent, {once:true});
+
+function checkTime(){
+  if(!current.duration) return;
+
+  const timeLeft=current.duration-current.currentTime;
+
+  if(timeLeft <= CROSSFADE_SECONDS){
+    switchVideo();
+  }
+}
+
+videoA.addEventListener('timeupdate', checkTime);
+videoB.addEventListener('timeupdate', checkTime);
+})();
+const heroVideos=document.querySelectorAll('.hero__video');
+
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(y<window.innerHeight){
+    heroVideos.forEach(video=>{
+      video.style.transform=`translateY(${y*.18}px) scale(1.04)`;
+    });
+  }
+},{passive:true});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',ev=>{const id=a.getAttribute('href').slice(1);const t=document.getElementById(id);if(t){ev.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}});});
 </script>
 </body>
